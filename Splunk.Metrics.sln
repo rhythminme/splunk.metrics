@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Abstractions", "src\Splunk.Metrics.Abstractions\Splunk.Metrics.Abstractions.csproj", "{F810EF8F-F3AE-43DF-B739-55182ADBE6AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Tests", "tests\Splunk.Metrics.Tests\Splunk.Metrics.Tests.csproj", "{992DD830-AA0E-4B82-ADEC-AE5EB029D5DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Statsd", "src\Splunk.Metrics.Statsd\Splunk.Metrics.Statsd.csproj", "{D3AC8543-6A34-4FD1-8097-194FB73CE409}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F810EF8F-F3AE-43DF-B739-55182ADBE6AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F810EF8F-F3AE-43DF-B739-55182ADBE6AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F810EF8F-F3AE-43DF-B739-55182ADBE6AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F810EF8F-F3AE-43DF-B739-55182ADBE6AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992DD830-AA0E-4B82-ADEC-AE5EB029D5DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992DD830-AA0E-4B82-ADEC-AE5EB029D5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992DD830-AA0E-4B82-ADEC-AE5EB029D5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992DD830-AA0E-4B82-ADEC-AE5EB029D5DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3AC8543-6A34-4FD1-8097-194FB73CE409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AC8543-6A34-4FD1-8097-194FB73CE409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AC8543-6A34-4FD1-8097-194FB73CE409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AC8543-6A34-4FD1-8097-194FB73CE409}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
