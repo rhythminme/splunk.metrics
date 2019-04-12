@@ -6,6 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Tests", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Statsd", "src\Splunk.Metrics.Statsd\Splunk.Metrics.Statsd.csproj", "{D3AC8543-6A34-4FD1-8097-194FB73CE409}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_build", "_build", "{F06304B1-C0B3-4AED-9BAE-C8DFE73CCD0B}"
+ProjectSection(SolutionItems) = preProject
+	README.md = README.md
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

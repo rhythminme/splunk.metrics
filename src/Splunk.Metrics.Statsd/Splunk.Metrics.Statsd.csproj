@@ -1,7 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>Splunk.Metrics.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Splunk.Metrics.Abstractions\Splunk.Metrics.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+    </ItemGroup>
 
 </Project>
