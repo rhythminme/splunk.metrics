@@ -7,13 +7,16 @@ namespace Splunk.Metrics.Statsd
     {
         private readonly string _prefix;
         private readonly bool _ensureLowercasedMetricNames;
+        private readonly bool _supportDimensions;
         private readonly NameValueCollection _defaultDimensions;
 
         public MetricBucketBuilder(string prefix, bool ensureLowercasedMetricNames = true,
+            bool supportDimensions = true,
             NameValueCollection defaultDimensions = null)
         {
             _prefix = prefix;
             _ensureLowercasedMetricNames = ensureLowercasedMetricNames;
+            _supportDimensions = supportDimensions;
             _defaultDimensions = defaultDimensions;
         }
         
@@ -27,12 +30,12 @@ namespace Splunk.Metrics.Statsd
         }
 
         private string GenerateDimensionsForExtendedMetrics() => 
-            (_defaultDimensions == null ? string.Empty : "|#" + GenerateDimensions(_defaultDimensions));
+            _defaultDimensions != null && _supportDimensions  ? "|#" + GenerateDimensions(_defaultDimensions) : string.Empty;
 
         private string GenerateMetricBucketName(string name) => 
-            string.IsNullOrEmpty(_prefix) ? name : _prefix + "." + name;
+            string.IsNullOrEmpty(_prefix) || _supportDimensions  ? name : _prefix + "." + name;
 
         private static string GenerateDimensions(NameValueCollection dimensions) => 
-            string.Join(",", dimensions.AllKeys.Select(dimension => $"{dimension}:{dimensions[(string) dimension]}"));
+            string.Join(",", dimensions.AllKeys.Select(dimension => $"{dimension}:{dimensions[dimension]}"));
     }
 }

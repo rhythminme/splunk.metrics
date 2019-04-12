@@ -10,12 +10,12 @@ namespace Splunk.Metrics.Abstractions
         
         IDisposable BeginTiming(string bucket);
         
-        Task TimingAsync(string feature, long durationMilliseconds);
-        Task<T> TimingAsync<T>(string feature, Func<Task<T>> func);
-        void Timing(string feature, long durationMilliseconds);
-        T Timing<T>(string feature, Func<T> func);
+        Task TimingAsync(string bucket, long durationMilliseconds);
+        Task<T> TimingAsync<T>(string bucket, Func<Task<T>> func);
+        void Timing(string bucket, long durationMilliseconds);
+        T Timing<T>(string bucket, Func<T> func);
         
         Task IncrementAsync(string bucket, long count = 1L);
-        void Increment(string bucket, int count = 1);
+        void Increment(string bucket, long count = 1L);
     }
 }

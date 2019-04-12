@@ -11,6 +11,8 @@ ProjectSection(SolutionItems) = preProject
 	README.md = README.md
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Tests.Integration", "tests\Splunk.Metrics.Tests.Integration\Splunk.Metrics.Tests.Integration.csproj", "{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,5 +31,9 @@ Global
 		{D3AC8543-6A34-4FD1-8097-194FB73CE409}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3AC8543-6A34-4FD1-8097-194FB73CE409}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3AC8543-6A34-4FD1-8097-194FB73CE409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
