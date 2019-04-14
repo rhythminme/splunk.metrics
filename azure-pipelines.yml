@@ -83,4 +83,4 @@ steps:
       command: push
       nuGetFeedType: external
       publishFeedCredentials: 'NuGet'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;-:$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
