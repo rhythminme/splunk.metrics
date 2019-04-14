@@ -29,6 +29,7 @@ steps:
         Write-Host "##vso[build.updatebuildnumber]$(majorMinorVersion).0-PR-$($env:SYSTEM_PULLREQUEST_PULLREQUESTNUMBER).$(buildNumber)"
       } else {
         Write-Host "##vso[build.updatebuildnumber]$(majorMinorVersion).$(buildNumber)"
+      }
     displayName: 'Update build number'
 
   - task: DotNetCoreCLI@2
