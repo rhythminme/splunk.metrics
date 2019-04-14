@@ -48,8 +48,8 @@ namespace Splunk.Metrics.Statsd
                 ? null
                 : new NameValueCollection
                 {
-                    {"host", _environment.GetMachineName().ToLowerInvariant()},
-                    {"namespace", _prefix.ToLowerInvariant()}
+                    { "host", _environment.GetMachineName() },
+                    { "namespace", _prefix }
                 };
     }
 }
