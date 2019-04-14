@@ -15,6 +15,8 @@ EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Tests.Integration", "tests\Splunk.Metrics.Tests.Integration\Splunk.Metrics.Tests.Integration.csproj", "{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splunk.Metrics.Http", "src\Splunk.Metrics.Http\Splunk.Metrics.Http.csproj", "{6FC1CF06-0A52-4D7E-8180-99489B1E21E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,5 +39,9 @@ Global
 		{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D7F817C-9559-4BA7-8869-BB0F7A5D4526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FC1CF06-0A52-4D7E-8180-99489B1E21E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC1CF06-0A52-4D7E-8180-99489B1E21E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC1CF06-0A52-4D7E-8180-99489B1E21E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC1CF06-0A52-4D7E-8180-99489B1E21E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

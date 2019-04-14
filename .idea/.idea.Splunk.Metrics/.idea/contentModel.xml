@@ -25,6 +25,19 @@
         </e>
         <e p="Splunk.Metrics.Abstractions.csproj" t="IncludeRecursive" />
       </e>
+      <e p="src/Splunk.Metrics.Http" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="HttpMetricsMiddleware.cs" t="Include" />
+        <e p="HttpMetricsMiddlewareExtensions.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Splunk.Metrics.Http.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Splunk.Metrics.Http.csproj" t="IncludeRecursive" />
+      </e>
       <e p="src/Splunk.Metrics.Statsd" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Channels" t="Include">
@@ -73,6 +86,7 @@
       </e>
       <e p="tests/Splunk.Metrics.Tests.Integration" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="HttpMiddlewareShould.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.1" t="Include">
@@ -84,6 +98,11 @@
         <e p="Ports.cs" t="Include" />
         <e p="Splunk.Metrics.Tests.Integration.csproj" t="IncludeRecursive" />
         <e p="StatsPublisherShould.cs" t="Include" />
+        <e p="Stubs" t="Include">
+          <e p="Startup.cs" t="Include" />
+          <e p="TestApiServer.cs" t="Include" />
+          <e p="TestController.cs" t="Include" />
+        </e>
         <e p="UdpListener.cs" t="Include" />
       </e>
     </e>

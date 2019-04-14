@@ -8,32 +8,38 @@ using Xunit.Abstractions;
 
 namespace Splunk.Metrics.Tests.Integration
 {
-    public class StatsPublisherShould
+    public class StatsPublisherShould : IDisposable
     {
-        private readonly ITestOutputHelper _testOutputHelper;
-
+        private readonly UdpListener _udpListener;
+        private readonly StatsPublisher _statsPublisher;
+        [Fact]
+        public async Task SendASingleStatsdUdpPacket()
+        {
+            await _statsPublisher.IncrementAsync("some-feature.event");
+            _udpListener.GetWrittenBytesAsString().Should().HaveCount(1);
+        }
+        
         [Fact]
         public async Task SendWellformedStatsDUdpPacket()
         {
-            using (var udpListener = new UdpListener(_testOutputHelper))
-            {
-                var statsPublisher = new StatsPublisher(Options.Create(new StatsConfiguration
-                {
-                    Prefix = "test-prefix",
-                    Host = "localhost",
-                    Port = udpListener.Port,
-                    EnsureLowercasedMetricNames = true,
-                    SupportSplunkExtendedMetrics = true
-                }));
-                
-                await statsPublisher.IncrementAsync("some-feature.event");
-                udpListener.GetWrittenBytesAsString().Should().Be($"some-feature.event:1|c|#host:{Environment.MachineName.ToLowerInvariant()},namespace:test-prefix");
-            }
+            await _statsPublisher.IncrementAsync("some-feature.event");
+            _udpListener.GetWrittenBytesAsString().Should()
+                .Contain("some-feature.event:1|c|#host:rajpals-macbook-pro,namespace:test-prefix");
         }
 
         public StatsPublisherShould(ITestOutputHelper testOutputHelper)
         {
-            _testOutputHelper = testOutputHelper;
+            _udpListener = new UdpListener(testOutputHelper);
+            _statsPublisher = new StatsPublisher(Options.Create(new StatsConfiguration
+            {
+                Prefix = "test-prefix",
+                Host = "localhost",
+                Port = _udpListener.Port,
+                EnsureLowercasedMetricNames = true,
+                SupportSplunkExtendedMetrics = true
+            }));
         }
+
+        public void Dispose() => _udpListener?.Dispose();
     }
 }
