@@ -1,17 +1,66 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+name: "$(majorMinorVersion)$(Rev:.r)"
 
 trigger:
-- master
+  batch: false
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+
+pr:
+  - master
 
 pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
+  majorMinorVersion: 2.1
+  buildNumber: $[counter('$(majorMinorVersion).$(System.PullRequest.PullRequestNumber)', 1)]
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  - powershell: |
+      Write-Host "Major/Minor: $(majorMinorVersion)"
+      Write-Host "Build: $(buildNumber)"
+      Write-Host "PR: $env:SYSTEM_PULLREQUEST_PULLREQUESTNUMBER"
+      if ($env:SYSTEM_PULLREQUEST_PULLREQUESTNUMBER) {
+        Write-Host "##vso[build.updatebuildnumber]$(majorMinorVersion).0-PR-$($env:SYSTEM_PULLREQUEST_PULLREQUESTNUMBER).$(buildNumber)"
+      } else {
+        Write-Host "##vso[build.updatebuildnumber]$(majorMinorVersion).$(buildNumber)"
+    displayName: 'Update build number'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore packages for services'
+    inputs:
+      command: restore
+      projects: 'src/**/*.csproj'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore packages for test projects'
+    inputs:
+      command: restore
+      projects: 'tests/**/*.csproj'
+      
+  - task: DotNetCoreCLI@2
+    displayName: 'Build solution'
+    inputs:
+      command: build
+      arguments: '--configuration $(buildConfiguration)'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Run unit tests'
+    inputs:
+      command: test
+      projects: 'tests/**/*.Tests.csproj'
+      arguments: '--configuration $(buildConfiguration)'
+      publishTestResults: true
+      
+  - task: DotNetCoreCLI@2
+    displayName: 'Run integration tests'
+    inputs:
+      command: test
+      projects: 'tests/**/*.Tests.Integration.csproj'
+      arguments: '--configuration $(buildConfiguration)'
+      publishTestResults: true

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -20,10 +19,10 @@ namespace Splunk.Metrics.Statsd
             _statsConfiguration = statsConfiguration;
             _channel = new UdpChannel(_statsConfiguration.Value.Host, _statsConfiguration.Value.Port);
             _metricBucketBuilder = new MetricBucketBuilder(
+                new DefaultEnvironment(),
                 _statsConfiguration.Value.Prefix, 
                 _statsConfiguration.Value.EnsureLowercasedMetricNames, 
-                _statsConfiguration.Value.SupportSplunkExtendedMetrics,
-                GenerateDefaultDimensions());
+                _statsConfiguration.Value.SupportSplunkExtendedMetrics);
         }
 
         public Task GaugeAsync(string bucket, double value) => 
@@ -33,19 +32,19 @@ namespace Splunk.Metrics.Statsd
             SendMetric(MetricTypes.Gauge, bucket, value);
 
         public Task TimingAsync(string bucket, long durationMilliseconds) => 
-            SendMetricAsync(MetricTypes.Tinming, bucket, durationMilliseconds);
-
-        public Task<T> TimingAsync<T>(string bucket, Func<Task<T>> func)
-        {
-            throw new NotImplementedException();
-        }
+            SendMetricAsync(MetricTypes.Timing, bucket, durationMilliseconds);
 
         public void Timing(string bucket, long durationMilliseconds) => 
-            SendMetric(MetricTypes.Tinming, bucket, durationMilliseconds);
+            SendMetric(MetricTypes.Timing, bucket, durationMilliseconds);
 
-        public T Timing<T>(string feature, Func<T> func)
+        public async Task<T> TimingAsync<T>(string bucket, Func<Task<T>> func)
         {
-            throw new NotImplementedException();
+            using (BeginTiming(bucket)) return await func();
+        }
+
+        public T Timing<T>(string bucket, Func<T> func)
+        {
+            using (BeginTiming(bucket)) return func();
         }
 
         public Task IncrementAsync(string bucket, long count = 1) => 
@@ -114,14 +113,5 @@ namespace Splunk.Metrics.Statsd
 
             _channel.Send(_metricBucketBuilder.Build(metricType, name, value));
         }
-
-        private NameValueCollection GenerateDefaultDimensions() =>
-            !_statsConfiguration.Value.SupportSplunkExtendedMetrics
-                ? null
-                : new NameValueCollection
-                {
-                    {"host", Environment.MachineName.ToLowerInvariant()},
-                    {"namespace", _statsConfiguration.Value.Prefix.ToLowerInvariant()}
-                };
     }
 }
