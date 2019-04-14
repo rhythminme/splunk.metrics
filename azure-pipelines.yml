@@ -75,3 +75,12 @@ steps:
       nobuild: true
       versioningScheme: byBuildNumber
       packagesToPack: 'src/**/*.csproj'
+
+  - task: NuGetCommand@2
+    displayName: Publish packages
+    condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'master'))
+    inputs:
+      command: push
+      nuGetFeedType: external
+      publishFeedCredentials: 'NuGet'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'

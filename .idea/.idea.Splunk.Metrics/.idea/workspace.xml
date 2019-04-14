@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6384700f-c8a3-43b3-b0f3-977bfaf66488" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Splunk.Metrics.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Splunk.Metrics.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/azure-pipelines.yml" beforeDir="false" afterPath="$PROJECT_DIR$/azure-pipelines.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,20 +28,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Directory.Build.props">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="32" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="32" />
+            <state relative-caret-position="105">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/azure-pipelines.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+            <state relative-caret-position="507">
+              <caret line="84" column="36" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -97,10 +97,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/TimingScope.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+            <state>
+              <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
               <folding>
-                <marker date="1555060210281" expanded="false" signature="6:74" ph="..." />
+                <marker date="1555060210281" expanded="true" signature="6:74" ph="..." />
                 <marker date="1555060210281" expanded="true" signature="107:841" ph="{...}" />
                 <marker date="1555060210281" expanded="true" signature="152:839" ph="{...}" />
                 <marker date="1555060210281" expanded="true" signature="378:497" ph="{...}" />
@@ -196,10 +196,10 @@
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/IPlatform.cs" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsPublisher.cs" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/azure-pipelines.yml" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricBucketBuilder.cs" />
         <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" />
         <option value="$PROJECT_DIR$/Directory.Build.props" />
+        <option value="$PROJECT_DIR$/azure-pipelines.yml" />
       </list>
     </option>
   </component>
@@ -232,27 +232,6 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Splunk.Metrics" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Splunk.Metrics.Abstractions" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Splunk.Metrics" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Splunk.Metrics.Statsd" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Splunk.Metrics" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Splunk.Metrics.Tests" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Splunk.Metrics" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Splunk.Metrics.Tests" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Splunk.Metrics" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Splunk.Metrics.Tests.Integration" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -294,12 +273,12 @@
       <workItem from="1554721782087" duration="316000" />
       <workItem from="1554741618890" duration="588000" />
       <workItem from="1554795626778" duration="2282000" />
-      <workItem from="1555057025583" duration="20142000" />
+      <workItem from="1555057025583" duration="20672000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23328000" />
+    <option name="totallyTimeSpent" value="23858000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -312,14 +291,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-34" y="30" width="1680" height="986" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Change Signature" sideWeight="0.50183153" side_tool="true" visible="true" weight="0.32997763" />
-      <window_info active="true" anchor="bottom" id="Build" sideWeight="0.4981685" visible="true" weight="0.32997763" />
+      <window_info anchor="bottom" id="Build" sideWeight="0.4981685" visible="true" weight="0.32997763" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -542,20 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/TimingScope.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
-          <folding>
-            <marker date="1555060210281" expanded="false" signature="6:74" ph="..." />
-            <marker date="1555060210281" expanded="true" signature="107:841" ph="{...}" />
-            <marker date="1555060210281" expanded="true" signature="152:839" ph="{...}" />
-            <marker date="1555060210281" expanded="true" signature="378:497" ph="{...}" />
-            <marker date="1555060210281" expanded="true" signature="528:687" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/IEnvironment.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -563,16 +529,6 @@
           <folding>
             <marker date="1555081442586" expanded="true" signature="31:116" ph="{...}" />
             <marker date="1555081442586" expanded="true" signature="69:114" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/DefaultEnvironment.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1555081520773" expanded="true" signature="46:180" ph="{...}" />
-            <marker date="1555081520773" expanded="true" signature="99:178" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -591,13 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/azure-pipelines.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -655,16 +604,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Directory.Build.props">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/version.props">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-98" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/TimingScope.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+          <folding>
+            <marker date="1555060210281" expanded="true" signature="6:74" ph="..." />
+            <marker date="1555060210281" expanded="true" signature="107:841" ph="{...}" />
+            <marker date="1555060210281" expanded="true" signature="152:839" ph="{...}" />
+            <marker date="1555060210281" expanded="true" signature="378:497" ph="{...}" />
+            <marker date="1555060210281" expanded="true" signature="528:687" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/DefaultEnvironment.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1555081520773" expanded="true" signature="46:180" ph="{...}" />
+            <marker date="1555081520773" expanded="true" signature="99:178" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Directory.Build.props">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/azure-pipelines.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="84" column="36" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+        </state>
       </provider>
     </entry>
   </component>
