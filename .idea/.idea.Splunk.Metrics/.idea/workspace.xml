@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6384700f-c8a3-43b3-b0f3-977bfaf66488" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/DefaultEnvironment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/IEnvironment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/TestEnvironment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Splunk.Metrics.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Splunk.Metrics.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/azure-pipelines.yml" beforeDir="false" afterPath="$PROJECT_DIR$/azure-pipelines.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricBucketBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricBucketBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsPublisher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsPublisher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/UdpListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/UdpListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,20 +12,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Abstractions/IStatsPublisher.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-              <folding>
-                <marker date="1555078837526" expanded="false" signature="6:43" ph="..." />
-                <marker date="1555078837526" expanded="true" signature="82:678" ph="{...}" />
-                <marker date="1555078837526" expanded="true" signature="121:676" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/UdpListener.cs">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,11 +47,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/azure-pipelines.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+            <state relative-caret-position="492">
+              <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -218,7 +201,6 @@
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Abstractions/IMetricsPublisher.cs" />
         <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/Class1.cs" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/Class1.cs" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/INetwork.cs" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/IChannel.cs" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/Channels/IChannel.cs" />
@@ -239,6 +221,7 @@
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsPublisher.cs" />
         <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" />
         <option value="$PROJECT_DIR$/azure-pipelines.yml" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -328,12 +311,12 @@
       <workItem from="1554721782087" duration="316000" />
       <workItem from="1554741618890" duration="588000" />
       <workItem from="1554795626778" duration="2282000" />
-      <workItem from="1555057025583" duration="17391000" />
+      <workItem from="1555057025583" duration="18070000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20577000" />
+    <option name="totallyTimeSpent" value="21256000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -348,7 +331,7 @@
     <frame x="-34" y="30" width="1680" height="986" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -366,7 +349,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Unit Tests" order="11" sideWeight="0.497558" visible="true" weight="0.32997763" />
+      <window_info anchor="bottom" id="Unit Tests" order="11" sideWeight="0.497558" visible="true" weight="0.32997763" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.07326008" side_tool="true" weight="0.39932886" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -419,13 +402,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/Channels/IChannel.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -685,8 +661,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/azure-pipelines.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+        <state relative-caret-position="492">
+          <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
