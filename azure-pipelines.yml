@@ -65,3 +65,13 @@ steps:
       projects: 'tests/**/*.Tests.Integration.csproj'
       arguments: '--configuration $(buildConfiguration)'
       publishTestResults: true
+      
+  - task: DotNetCoreCLI@2
+    displayName: 'Pack primary libraries (Release)'
+    inputs:
+      command: pack
+      configuration: $(buildConfiguration)
+      packDirectory: '$(Build.ArtifactStagingDirectory)/packages/release'
+      nobuild: true
+      versioningScheme: byBuildNumber
+      packagesToPack: 'src/**/*.csproj'

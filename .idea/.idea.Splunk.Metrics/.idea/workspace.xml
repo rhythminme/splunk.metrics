@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6384700f-c8a3-43b3-b0f3-977bfaf66488" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricBucketBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricBucketBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Splunk.Metrics.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Splunk.Metrics.sln" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,36 +13,26 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/UdpListener.cs">
+        <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+            <state relative-caret-position="139">
+              <caret line="23" column="105" selection-start-line="23" selection-start-column="105" selection-end-line="23" selection-end-column="105" />
               <folding>
-                <marker date="1555080181713" expanded="true" signature="6:129" ph="..." />
-                <marker date="1555080181713" expanded="true" signature="253:2237" ph="{...}" />
-                <marker date="1555080181713" expanded="true" signature="302:2235" ph="{...}" />
-                <marker date="1555080181713" expanded="true" signature="726:1057" ph="{...}" />
-                <marker date="1555080181713" expanded="true" signature="1153:1637" ph="{...}" />
-                <marker date="1555080181713" expanded="true" signature="1669:1958" ph="{...}" />
-                <marker date="1555080181713" expanded="true" signature="1845:1948" ph="{...}" />
-                <marker date="1555080181713" expanded="true" signature="2072:2229" ph="{...}" />
+                <marker date="1555230491220" expanded="true" signature="6:65" ph="..." />
+                <marker date="1555230491220" expanded="true" signature="97:2353" ph="{...}" />
+                <marker date="1555230491220" expanded="true" signature="154:1040" ph="{...}" />
+                <marker date="1555230491220" expanded="true" signature="1103:1716" ph="{...}" />
+                <marker date="1555230491220" expanded="true" signature="1790:2351" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Directory.Build.props">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-              <folding>
-                <marker date="1555230315685" expanded="true" signature="6:65" ph="..." />
-                <marker date="1555230315685" expanded="true" signature="97:2353" ph="{...}" />
-                <marker date="1555230315685" expanded="true" signature="154:1040" ph="{...}" />
-                <marker date="1555230315685" expanded="true" signature="1103:1716" ph="{...}" />
-                <marker date="1555230315685" expanded="true" signature="1790:2351" ph="{...}" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="1" column="32" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -62,24 +51,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
               <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
-              <folding>
-                <marker date="1555080240678" expanded="true" signature="6:145" ph="..." />
-                <marker date="1555080240678" expanded="true" signature="215:1302" ph="{...}" />
-                <marker date="1555080240678" expanded="true" signature="255:1300" ph="{...}" />
-                <marker date="1555080240678" expanded="true" signature="397:1151" ph="{...}" />
-                <marker date="1555080240678" expanded="true" signature="480:1141" ph="{...}" />
-                <marker date="1555080240678" expanded="true" signature="605:865" ph="{...}" />
-                <marker date="1555080240678" expanded="true" signature="1224:1294" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -139,7 +110,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricBucketBuilder.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
@@ -170,6 +141,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>version.props</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -221,8 +197,9 @@
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsPublisher.cs" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/azure-pipelines.yml" />
-        <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricBucketBuilder.cs" />
+        <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs" />
+        <option value="$PROJECT_DIR$/Directory.Build.props" />
       </list>
     </option>
   </component>
@@ -288,7 +265,7 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/azure-pipelines.yml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/version.props" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -317,12 +294,12 @@
       <workItem from="1554721782087" duration="316000" />
       <workItem from="1554741618890" duration="588000" />
       <workItem from="1554795626778" duration="2282000" />
-      <workItem from="1555057025583" duration="18896000" />
+      <workItem from="1555057025583" duration="20142000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22082000" />
+    <option name="totallyTimeSpent" value="23328000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -341,8 +318,8 @@
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Change Signature" sideWeight="0.502442" side_tool="true" visible="true" weight="0.32997763" />
-      <window_info anchor="bottom" id="Build" sideWeight="0.498779" weight="0.32997763" />
+      <window_info anchor="bottom" id="Change Signature" sideWeight="0.50183153" side_tool="true" visible="true" weight="0.32997763" />
+      <window_info active="true" anchor="bottom" id="Build" sideWeight="0.4981685" visible="true" weight="0.32997763" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -354,7 +331,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Unit Tests" order="11" sideWeight="0.497558" visible="true" weight="0.32997763" />
+      <window_info anchor="bottom" id="Unit Tests" order="11" sideWeight="0.497558" weight="0.32997763" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.07326008" side_tool="true" weight="0.39932886" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -624,20 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding>
-            <marker date="1555230315685" expanded="true" signature="6:65" ph="..." />
-            <marker date="1555230315685" expanded="true" signature="97:2353" ph="{...}" />
-            <marker date="1555230315685" expanded="true" signature="154:1040" ph="{...}" />
-            <marker date="1555230315685" expanded="true" signature="1103:1716" ph="{...}" />
-            <marker date="1555230315685" expanded="true" signature="1790:2351" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsPublisher.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1196">
@@ -676,6 +639,32 @@
             <marker date="1555230440882" expanded="true" signature="2084:2211" ph="{...}" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests/MetricBucketBuilderWithDefaultsShould.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="23" column="105" selection-start-line="23" selection-start-column="105" selection-end-line="23" selection-end-column="105" />
+          <folding>
+            <marker date="1555230491220" expanded="true" signature="6:65" ph="..." />
+            <marker date="1555230491220" expanded="true" signature="97:2353" ph="{...}" />
+            <marker date="1555230491220" expanded="true" signature="154:1040" ph="{...}" />
+            <marker date="1555230491220" expanded="true" signature="1103:1716" ph="{...}" />
+            <marker date="1555230491220" expanded="true" signature="1790:2351" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Directory.Build.props">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/version.props">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98" />
       </provider>
     </entry>
   </component>

@@ -9,6 +9,7 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="_build" t="Include" />
       <e p="azure-pipelines.yml" t="Include" />
+      <e p="Directory.Build.props" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="README.md" t="Include" />
       <e p="Splunk.Metrics.sln" t="IncludeFlat" />
@@ -46,11 +47,13 @@
         <e p="StatsPublisher.cs" t="Include" />
         <e p="System.Reflection.AssemblyCompanyAttribute" t="Include" />
         <e p="System.Reflection.AssemblyConfigurationAttribute" t="Include" />
+        <e p="System.Reflection.AssemblyCopyrightAttribute" t="Include" />
         <e p="System.Reflection.AssemblyFileVersionAttribute" t="Include" />
         <e p="System.Reflection.AssemblyInformationalVersionAttribute" t="Include" />
         <e p="System.Reflection.AssemblyProductAttribute" t="Include" />
         <e p="System.Reflection.AssemblyTitleAttribute" t="Include" />
         <e p="System.Reflection.AssemblyVersionAttribute" t="Include" />
+        <e p="System.Resources.NeutralResourcesLanguageAttribute" t="Include" />
         <e p="System.Runtime.CompilerServices.InternalsVisibleTo" t="Include" />
         <e p="TimingScope.cs" t="Include" />
       </e>
