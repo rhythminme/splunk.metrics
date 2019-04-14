@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageDescription>Base interfaces for emitting metrics via statsd.</PackageDescription>
     </PropertyGroup>
 
 </Project>

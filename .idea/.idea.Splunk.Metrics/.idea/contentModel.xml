@@ -26,9 +26,6 @@
         <e p="Splunk.Metrics.Abstractions.csproj" t="IncludeRecursive" />
       </e>
       <e p="src/Splunk.Metrics.Http" t="IncludeRecursive">
-        <e p="Assets" t="Include">
-          <e p="README.md" t="Include" />
-        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="HttpMetricsMiddleware.cs" t="Include" />
         <e p="HttpMetricsMiddlewareExtensions.cs" t="Include" />

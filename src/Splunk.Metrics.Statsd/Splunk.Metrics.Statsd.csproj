@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageDescription>Implements extended metrics for Splunk (dimensions and sample rate)</PackageDescription>
     </PropertyGroup>
 
     <ItemGroup>
