@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6384700f-c8a3-43b3-b0f3-977bfaf66488" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Http/HttpMetricsMiddlewareExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/HttpMiddlewareShould.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/Stubs/Startup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/Stubs/TestApiServer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/Stubs/TestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Splunk.Metrics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Splunk.Metrics.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Splunk.Metrics.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/Splunk.Metrics.Tests.Integration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/Splunk.Metrics.Tests.Integration.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/HttpMiddlewareShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/HttpMiddlewareShould.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/UdpListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/UdpListener.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,27 +48,45 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/HttpMiddlewareShould.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+            <state relative-caret-position="-911">
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
               <folding>
-                <marker date="1555267063564" expanded="false" signature="6:194" ph="..." />
-                <marker date="1555267063564" expanded="true" signature="238:4478" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="299:4476" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="550:901" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="623:891" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="1064:1738" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="1255:1728" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="1900:2794" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="2091:2784" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="2892:3424" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="2965:3414" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="3529:4114" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="3602:4104" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="4194:4344" ph="{...}" />
-                <marker date="1555267063564" expanded="true" signature="4375:4470" ph="{...}" />
+                <marker date="1555267428094" expanded="false" signature="6:194" ph="..." />
+                <marker date="1555267428094" expanded="true" signature="238:4295" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="299:4293" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="550:886" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="623:876" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="1049:1723" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="1240:1713" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="1885:2611" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="2076:2601" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="2709:3241" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="2782:3231" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="3346:3931" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="3419:3921" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="4011:4161" ph="{...}" />
+                <marker date="1555267428094" expanded="true" signature="4192:4287" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+              <folding>
+                <marker date="1555267484657" expanded="false" signature="6:171" ph="..." />
+                <marker date="1555267484657" expanded="true" signature="215:1541" ph="{...}" />
+                <marker date="1555267484657" expanded="true" signature="269:1539" ph="{...}" />
+                <marker date="1555267484657" expanded="true" signature="453:619" ph="{...}" />
+                <marker date="1555267484657" expanded="true" signature="701:979" ph="{...}" />
+                <marker date="1555267484657" expanded="true" signature="1052:1474" ph="{...}" />
+                <marker date="1555267484657" expanded="true" signature="1224:1461" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -99,6 +106,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/Channels/IChannel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/IEnvironment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/obj/Debug/netstandard2.0/Splunk.Metrics.Statsd.AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Splunk.Metrics.Http/HttpMetricsMiddlewareExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/DefaultEnvironment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Splunk.Metrics.Statsd/MetricTypes.cs" root0="FORCE_HIGHLIGHTING" />
@@ -159,9 +167,9 @@
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Statsd/StatsPublisher.cs" />
         <option value="$PROJECT_DIR$/src/Splunk.Metrics.Http/HttpMetricsMiddleware.cs" />
         <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/UdpListener.cs" />
-        <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs" />
         <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/Stubs/TestApiServer.cs" />
         <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/HttpMiddlewareShould.cs" />
+        <option value="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs" />
       </list>
     </option>
   </component>
@@ -226,12 +234,12 @@
       <workItem from="1554795626778" duration="2282000" />
       <workItem from="1555057025583" duration="26221000" />
       <workItem from="1555265968249" duration="167000" />
-      <workItem from="1555266138457" duration="894000" />
+      <workItem from="1555266138457" duration="1168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30468000" />
+    <option name="totallyTimeSpent" value="30742000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -334,10 +342,10 @@
           <line>45</line>
           <properties documentPath="$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/HttpMiddlewareShould.cs" initialLine="45">
             <startOffsets>
-              <option value="1571" />
+              <option value="1556" />
             </startOffsets>
             <endOffsets>
-              <option value="1610" />
+              <option value="1595" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="13" />
@@ -607,7 +615,6 @@
           <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
           <folding>
             <marker date="1555264183404" expanded="false" signature="6:206" ph="..." />
-            <marker date="1555264183404" expanded="true" signature="239:4411" ph="{...}" />
             <marker date="1555264183404" expanded="true" signature="291:4409" ph="{...}" />
             <marker date="1555264183404" expanded="true" signature="571:1046" ph="{...}" />
             <marker date="1555264183404" expanded="true" signature="1678:1759" ph="{...}" />
@@ -622,21 +629,6 @@
             <marker date="1555264183404" expanded="true" signature="3577:3742" ph="{...}" />
             <marker date="1555264183404" expanded="true" signature="3933:4130" ph="{...}" />
             <marker date="1555264183404" expanded="true" signature="4217:4403" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding>
-            <marker date="1555265331781" expanded="false" signature="6:171" ph="..." />
-            <marker date="1555265331781" expanded="true" signature="269:1513" ph="{...}" />
-            <marker date="1555265331781" expanded="true" signature="453:619" ph="{...}" />
-            <marker date="1555265331781" expanded="true" signature="701:953" ph="{...}" />
-            <marker date="1555265331781" expanded="true" signature="1026:1448" ph="{...}" />
-            <marker date="1555265331781" expanded="true" signature="1198:1435" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -723,24 +715,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/HttpMiddlewareShould.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+        <state relative-caret-position="-911">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
           <folding>
-            <marker date="1555267063564" expanded="false" signature="6:194" ph="..." />
-            <marker date="1555267063564" expanded="true" signature="238:4478" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="299:4476" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="550:901" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="623:891" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="1064:1738" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="1255:1728" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="1900:2794" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="2091:2784" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="2892:3424" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="2965:3414" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="3529:4114" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="3602:4104" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="4194:4344" ph="{...}" />
-            <marker date="1555267063564" expanded="true" signature="4375:4470" ph="{...}" />
+            <marker date="1555267428094" expanded="false" signature="6:194" ph="..." />
+            <marker date="1555267428094" expanded="true" signature="238:4295" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="299:4293" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="550:886" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="623:876" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="1049:1723" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="1240:1713" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="1885:2611" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="2076:2601" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="2709:3241" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="2782:3231" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="3346:3931" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="3419:3921" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="4011:4161" ph="{...}" />
+            <marker date="1555267428094" expanded="true" signature="4192:4287" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Splunk.Metrics.Tests.Integration/StatsPublisherShould.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding>
+            <marker date="1555267484657" expanded="false" signature="6:171" ph="..." />
+            <marker date="1555267484657" expanded="true" signature="215:1541" ph="{...}" />
+            <marker date="1555267484657" expanded="true" signature="269:1539" ph="{...}" />
+            <marker date="1555267484657" expanded="true" signature="453:619" ph="{...}" />
+            <marker date="1555267484657" expanded="true" signature="701:979" ph="{...}" />
+            <marker date="1555267484657" expanded="true" signature="1052:1474" ph="{...}" />
+            <marker date="1555267484657" expanded="true" signature="1224:1461" ph="{...}" />
           </folding>
         </state>
       </provider>

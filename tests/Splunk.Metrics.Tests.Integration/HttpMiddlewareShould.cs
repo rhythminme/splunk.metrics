@@ -23,7 +23,7 @@ namespace Splunk.Metrics.Tests.Integration
             {
                 var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
 
-                var response = await testApiClient.SendAsync(request);
+                await testApiClient.SendAsync(request);
 
                 udpListener.GetWrittenBytesAsString().Should().HaveCount(2);
             }

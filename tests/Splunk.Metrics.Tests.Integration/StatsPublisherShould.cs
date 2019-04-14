@@ -24,7 +24,7 @@ namespace Splunk.Metrics.Tests.Integration
         {
             await _statsPublisher.IncrementAsync("some-feature.event");
             _udpListener.GetWrittenBytesAsString().Should()
-                .Contain("some-feature.event:1|c|#host:rajpals-macbook-pro,namespace:test-prefix");
+                .Contain($"some-feature.event:1|c|#host:{Environment.MachineName.ToLowerInvariant()},namespace:test-prefix");
         }
 
         public StatsPublisherShould(ITestOutputHelper testOutputHelper)
