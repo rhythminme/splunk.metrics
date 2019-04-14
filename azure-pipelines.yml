@@ -16,7 +16,7 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  majorMinorVersion: 2.1
+  majorMinorVersion: 1.0
   buildNumber: $[counter('$(majorMinorVersion).$(System.PullRequest.PullRequestNumber)', 1)]
   buildConfiguration: 'Release'
 
