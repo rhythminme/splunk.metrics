@@ -39,7 +39,7 @@ namespace Splunk.Metrics.Tests.Integration
 
             using (var testApiClient = _testApiServer.Start())
             {
-                var expectedRouteBucket = $@"http\.{controllerName}-{actionName}-{method}\.msecs:([0-9]+)\|ms\|#host:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
+                var expectedRouteBucket = $@"http\.{controllerName}-{actionName}-{method}\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
 
                 var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
 
@@ -61,7 +61,7 @@ namespace Splunk.Metrics.Tests.Integration
                 var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
 
                 var response = await testApiClient.SendAsync(request);
-                var expectedStatusBucket = $"http.{controllerName}-{actionName}-{method}.{(int)response.StatusCode}:1|c|#host:{Environment.MachineName},namespace:integration.tests"
+                var expectedStatusBucket = $"http.{controllerName}-{actionName}-{method}.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:integration.tests"
                     .ToLowerInvariant();
                 
                 udpListener.GetWrittenBytesAsString().Last().Should().Be(expectedStatusBucket);
@@ -73,7 +73,7 @@ namespace Splunk.Metrics.Tests.Integration
         {
             using (var testApiClient = _testApiServer.Start())
             {
-                var expectedRouteBucket = $@"http\.no-route-data\.msecs:([0-9]+)\|ms\|#host:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
+                var expectedRouteBucket = $@"http\.no-route-data\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
                 var request = new HttpRequestMessage(HttpMethod.Get, "/non-existent-page");
 
                 await testApiClient.SendAsync(request);
@@ -89,7 +89,7 @@ namespace Splunk.Metrics.Tests.Integration
                 var request = new HttpRequestMessage(HttpMethod.Get, "/non-existent-page");
 
                 var response = await testApiClient.SendAsync(request);
-                var expectedStatusBucket = $"http.no-route-data.{(int)response.StatusCode}:1|c|#host:{Environment.MachineName},namespace:integration.tests"
+                var expectedStatusBucket = $"http.no-route-data.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:integration.tests"
                     .ToLowerInvariant();
                 
                 udpListener.GetWrittenBytesAsString().Last().Should().Be(expectedStatusBucket);
