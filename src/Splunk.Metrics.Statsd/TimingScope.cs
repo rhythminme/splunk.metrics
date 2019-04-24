@@ -20,10 +20,7 @@ namespace Splunk.Metrics.Statsd
         public void Dispose()
         {
             stopwatch.Stop();
-            statsd.Timing(GenerateBucketName($"{bucket}.msecs"), (long)stopwatch.Elapsed.TotalMilliseconds);
+            statsd.Timing($"{bucket}.msecs".ToLowerInvariant(), (long)stopwatch.Elapsed.TotalMilliseconds);
         }
-        
-        private static string GenerateBucketName(string bucket) =>
-            $"{Environment.MachineName}.{bucket}".ToLowerInvariant();
     }
 }
