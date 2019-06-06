@@ -110,4 +110,4 @@ Backup*/
 UpgradeLog*.XML
 
 Nuget Releases/
-.idea
+.idea/
