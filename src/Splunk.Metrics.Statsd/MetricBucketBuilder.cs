@@ -5,11 +5,12 @@ namespace Splunk.Metrics.Statsd
 {
     internal class MetricBucketBuilder
     {
+        private const string DimensionsPrefix = "|#";
         private readonly IEnvironment _environment;
         private readonly string _prefix;
         private readonly bool _ensureLowercasedMetricNames;
         private readonly bool _supportDimensions;
-        private readonly IEnumerable<KeyValuePair<string, string>> _defaultDimensions;
+        private readonly string _defaultDimensionPrefix;
 
         public MetricBucketBuilder(
             IEnvironment environment,
@@ -22,9 +23,7 @@ namespace Splunk.Metrics.Statsd
             _prefix = prefix;
             _ensureLowercasedMetricNames = ensureLowercasedMetricNames;
             _supportDimensions = supportDimensions;
-            _defaultDimensions = additionalDimensions == null 
-                ? GenerateDefaultDimensions()
-                : GenerateDefaultDimensions().Concat(additionalDimensions);
+            _defaultDimensionPrefix = $"{DimensionsPrefix}{GenerateDimensions(GenerateDefaultDimensions(additionalDimensions))}";
         }
 
         public string Build(string metricType, string name, string value,
@@ -38,14 +37,16 @@ namespace Splunk.Metrics.Statsd
         }
 
         private string GenerateDimensionsForExtendedMetrics(
-            IEnumerable<KeyValuePair<string, string>> additionalDimensions = null)
+            IEnumerable<KeyValuePair<string, string>> additionalDimensions)
         {
-            if ((_defaultDimensions == null && additionalDimensions == null) || !_supportDimensions)
+            if (!_supportDimensions)
                 return string.Empty;
 
-            return _defaultDimensions != null && additionalDimensions != null
-                ? "|#" + GenerateDimensions(_defaultDimensions) + "," + GenerateDimensions(additionalDimensions)
-                : "|#" + GenerateDimensions(_defaultDimensions) + GenerateDimensions(additionalDimensions);
+            var additionalDimensionText = GenerateDimensions(additionalDimensions);
+
+            return !string.IsNullOrEmpty(additionalDimensionText)
+                ? $"{_defaultDimensionPrefix},{additionalDimensionText}"
+                : $"{_defaultDimensionPrefix}";
         }
 
         private string GenerateMetricBucketName(string name) =>
@@ -56,13 +57,20 @@ namespace Splunk.Metrics.Statsd
                 ? string.Empty
                 : string.Join(",", dimensions.Select(dimension => $"{dimension.Key}:{dimension.Value}"));
 
-        private IEnumerable<KeyValuePair<string, string>> GenerateDefaultDimensions() =>
-            !_supportDimensions
-                ? null
-                : new Dictionary<string, string>
-                    {
-                        {"instance", _environment.GetMachineName()},
-                        {"namespace", _prefix}
-                    };
+        private IEnumerable<KeyValuePair<string, string>> GenerateDefaultDimensions(IEnumerable<KeyValuePair<string, string>> additionalDimensions) =>
+            _supportDimensions
+                ? additionalDimensions == null
+                    ? DefaultDimensions()
+                    : DefaultDimensions().Concat(additionalDimensions)
+                : null;
+
+        private Dictionary<string, string> DefaultDimensions()
+        {
+            return new Dictionary<string, string>
+            {
+                {"instance", _environment.GetMachineName()},
+                {"namespace", _prefix}
+            };
+        }
     }
 }
