@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
@@ -21,11 +22,19 @@ namespace Splunk.Metrics.Tests.Integration
         }
         
         [Fact]
-        public async Task SendWellformedStatsDUdpPacket()
+        public async Task SendWellFormedStatsDUdpPacket()
         {
             await _statsPublisher.IncrementAsync("some-feature.event");
             _udpListener.GetWrittenBytesAsString().Should()
                 .Contain($"some-feature.event:1|c|#instance:{Environment.MachineName.ToLowerInvariant()},namespace:test-prefix");
+        }
+        
+        [Fact]
+        public async Task SendWellFormedStatsDUdpPacketIncludingDimensions()
+        {
+            await _statsPublisher.IncrementAsync("some-feature.event", 1, new Dictionary<string, string>{{"dimension1","value1"}});
+            _udpListener.GetWrittenBytesAsString().Should()
+                .Contain($"some-feature.event:1|c|#instance:{Environment.MachineName.ToLowerInvariant()},namespace:test-prefix,dimension1:value1");
         }
 
         public StatsPublisherShould(ITestOutputHelper testOutputHelper)

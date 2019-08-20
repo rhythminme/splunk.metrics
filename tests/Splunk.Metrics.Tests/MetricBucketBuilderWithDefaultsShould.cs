@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using Splunk.Metrics.Statsd;
 using Xunit;
 
@@ -37,5 +38,39 @@ namespace Splunk.Metrics.Tests
             new MetricBucketBuilder(new TestEnvironment(), prefix, true, false)
                 .Build(type, metricName, value)
                 .Should().Be(expectedBucketName);
+    }
+
+    public class MetricBucketBuilderWithExtraDefaultDimensionsShould
+    {
+        [Fact]
+        public void ReturnAValidMetricName() =>
+            new MetricBucketBuilder(new TestEnvironment(), 
+                    "metric-prefix", 
+                    false, 
+                    additionalDimensions: new Dictionary<string, string>
+                    {
+                        {"dimension1","value1"},
+                        {"dimension2","value2"}    
+                    })
+                .Build(MetricTypes.Count, "metric-name", "1")
+                .Should().Be("metric-name:1|c|#instance:Test-Machine,namespace:metric-prefix,dimension1:value1,dimension2:value2");
+        
+        [Fact]
+        public void ReturnAValidMetricNameIncludingAdditionalDimensions() =>
+            new MetricBucketBuilder(new TestEnvironment(), 
+                    "metric-prefix", 
+                    false, 
+                    additionalDimensions: new Dictionary<string, string>
+                    {
+                        {"dimension1","value1"},
+                        {"dimension2","value2"}    
+                    })
+                .Build(MetricTypes.Count, "metric-name", "1", 
+                    additionalDimensions: new Dictionary<string, string>
+                    {
+                        {"dimension3","value3"},
+                        {"dimension4","value4"}    
+                    })
+                .Should().Be("metric-name:1|c|#instance:Test-Machine,namespace:metric-prefix,dimension1:value1,dimension2:value2,dimension3:value3,dimension4:value4");
     }
 }

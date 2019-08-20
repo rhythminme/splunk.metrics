@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -10,53 +11,53 @@ namespace Splunk.Metrics.Statsd
 {
     public class StatsPublisher : IStatsPublisher
     {
-        private readonly IOptions<StatsConfiguration> _statsConfiguration;
         private readonly IChannel _channel;
         private readonly MetricBucketBuilder _metricBucketBuilder;
-        
-        public StatsPublisher(IOptions<StatsConfiguration> statsConfiguration)
+
+        public StatsPublisher(IOptions<StatsConfiguration> statsConfiguration,
+            IEnumerable<KeyValuePair<string, string>> additionalDimensions = null)
         {
-            _statsConfiguration = statsConfiguration;
-            _channel = new UdpChannel(_statsConfiguration.Value.Host, _statsConfiguration.Value.Port);
+            _channel = new UdpChannel(statsConfiguration.Value.Host, statsConfiguration.Value.Port);
             _metricBucketBuilder = new MetricBucketBuilder(
                 new DefaultEnvironment(),
-                _statsConfiguration.Value.Prefix, 
-                _statsConfiguration.Value.EnsureLowercasedMetricNames, 
-                _statsConfiguration.Value.SupportSplunkExtendedMetrics);
+                statsConfiguration.Value.Prefix,
+                statsConfiguration.Value.EnsureLowercasedMetricNames,
+                statsConfiguration.Value.SupportSplunkExtendedMetrics,
+                additionalDimensions);
         }
 
-        public Task GaugeAsync(string bucket, double value) => 
-            SendMetricAsync(MetricTypes.Gauge, bucket, value);
+        public Task GaugeAsync(string bucket, double value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null) => 
+            SendMetricAsync(MetricTypes.Gauge, bucket, value, additionalDimensions);
 
-        public void Gauge(string bucket, double value) => 
-            SendMetric(MetricTypes.Gauge, bucket, value);
+        public void Gauge(string bucket, double value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null) => 
+            SendMetric(MetricTypes.Gauge, bucket, value, additionalDimensions);
 
-        public Task TimingAsync(string bucket, long durationMilliseconds) => 
-            SendMetricAsync(MetricTypes.Timing, bucket, durationMilliseconds);
+        public Task TimingAsync(string bucket, long durationMilliseconds, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null) => 
+            SendMetricAsync(MetricTypes.Timing, bucket, durationMilliseconds, additionalDimensions);
 
-        public void Timing(string bucket, long durationMilliseconds) => 
-            SendMetric(MetricTypes.Timing, bucket, durationMilliseconds);
+        public void Timing(string bucket, long durationMilliseconds, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null) => 
+            SendMetric(MetricTypes.Timing, bucket, durationMilliseconds, additionalDimensions);
 
-        public async Task<T> TimingAsync<T>(string bucket, Func<Task<T>> func)
+        public async Task<T> TimingAsync<T>(string bucket, Func<Task<T>> func, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
-            using (BeginTiming(bucket)) return await func();
+            using (BeginTiming(bucket, additionalDimensions)) return await func();
         }
 
-        public T Timing<T>(string bucket, Func<T> func)
+        public T Timing<T>(string bucket, Func<T> func, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
-            using (BeginTiming(bucket)) return func();
+            using (BeginTiming(bucket, additionalDimensions)) return func();
         }
 
-        public Task IncrementAsync(string bucket, long count = 1) => 
-            SendMetricAsync(MetricTypes.Count, bucket, count);
+        public Task IncrementAsync(string bucket, long count = 1, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null) => 
+            SendMetricAsync(MetricTypes.Count, bucket, count, additionalDimensions);
 
-        public void Increment(string bucket, long count = 1) => 
-            SendMetric(MetricTypes.Count, bucket, count);
+        public void Increment(string bucket, long count = 1, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null) => 
+            SendMetric(MetricTypes.Count, bucket, count, additionalDimensions);
 
-        public IDisposable BeginTiming(string bucket) => 
-            new TimingScope(this, bucket);
+        public IDisposable BeginTiming(string bucket, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null) => 
+            new TimingScope(this, bucket, additionalDimensions);
 
-        private async Task SendMetricAsync(string metricType, string bucket, long value)
+        private async Task SendMetricAsync(string metricType, string bucket, long value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
             if (value < 0)
             {
@@ -64,10 +65,10 @@ namespace Splunk.Metrics.Statsd
                 return;
             }
 
-            await SendMetricAsync(metricType, bucket, value.ToString(CultureInfo.InvariantCulture));
+            await SendMetricAsync(metricType, bucket, value.ToString(CultureInfo.InvariantCulture), additionalDimensions);
         }
         
-        private async Task SendMetricAsync(string metricType, string bucket, double value)
+        private async Task SendMetricAsync(string metricType, string bucket, double value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
             if (value < 0)
             {
@@ -75,10 +76,10 @@ namespace Splunk.Metrics.Statsd
                 return;
             }
 
-            await SendMetricAsync(metricType, bucket, value.ToString(CultureInfo.InvariantCulture));
+            await SendMetricAsync(metricType, bucket, value.ToString(CultureInfo.InvariantCulture), additionalDimensions);
         }
 
-        private void SendMetric(string metricType, string bucket, long value)
+        private void SendMetric(string metricType, string bucket, long value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
             if (value < 0)
             {
@@ -86,10 +87,10 @@ namespace Splunk.Metrics.Statsd
                 return;
             }
 
-            SendMetric(metricType, bucket, value.ToString(CultureInfo.InvariantCulture));
+            SendMetric(metricType, bucket, value.ToString(CultureInfo.InvariantCulture), additionalDimensions);
         }
         
-        private void SendMetric(string metricType, string bucket, double value)
+        private void SendMetric(string metricType, string bucket, double value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
             if (value < 0)
             {
@@ -97,21 +98,21 @@ namespace Splunk.Metrics.Statsd
                 return;
             }
 
-            SendMetric(metricType, bucket, value.ToString(CultureInfo.InvariantCulture));
+            SendMetric(metricType, bucket, value.ToString(CultureInfo.InvariantCulture), additionalDimensions);
         }
 
-        private async Task SendMetricAsync(string metricType, string name, string value)
+        private async Task SendMetricAsync(string metricType, string name, string value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
 
-            await _channel.SendAsync(_metricBucketBuilder.Build(metricType, name, value));
+            await _channel.SendAsync(_metricBucketBuilder.Build(metricType, name, value, additionalDimensions));
         }
         
-        private void SendMetric(string metricType, string name, string value)
+        private void SendMetric(string metricType, string name, string value, IEnumerable<KeyValuePair<string,string>> additionalDimensions = null)
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
 
-            _channel.Send(_metricBucketBuilder.Build(metricType, name, value));
+            _channel.Send(_metricBucketBuilder.Build(metricType, name, value, additionalDimensions));
         }
     }
 }
