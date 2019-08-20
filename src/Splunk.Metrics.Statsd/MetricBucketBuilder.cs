@@ -26,8 +26,16 @@ namespace Splunk.Metrics.Statsd
             _defaultDimensionPrefix = $"{DimensionsPrefix}{GenerateDimensions(GenerateDefaultDimensions(additionalDimensions))}";
         }
 
-        public string Build(string metricType, string name, string value,
-            IEnumerable<KeyValuePair<string, string>> additionalDimensions = null)
+        public string Build(string metricType, string name, string value)
+        {
+            var extendedMetric = GenerateMetricBucketName(name)
+                                 + ":" + value
+                                 + "|" + metricType
+                                 + GenerateDimensionsForExtendedMetrics();
+            return _ensureLowercasedMetricNames ? extendedMetric.ToLowerInvariant() : extendedMetric;
+        }
+        
+        public string Build(string metricType, string name, string value, IEnumerable<KeyValuePair<string, string>> additionalDimensions)
         {
             var extendedMetric = GenerateMetricBucketName(name)
                                  + ":" + value
@@ -36,8 +44,15 @@ namespace Splunk.Metrics.Statsd
             return _ensureLowercasedMetricNames ? extendedMetric.ToLowerInvariant() : extendedMetric;
         }
 
-        private string GenerateDimensionsForExtendedMetrics(
-            IEnumerable<KeyValuePair<string, string>> additionalDimensions)
+        private string GenerateDimensionsForExtendedMetrics()
+        {
+            if (!_supportDimensions)
+                return string.Empty;
+            
+            return _defaultDimensionPrefix;
+        }
+        
+        private string GenerateDimensionsForExtendedMetrics(IEnumerable<KeyValuePair<string, string>> additionalDimensions)
         {
             if (!_supportDimensions)
                 return string.Empty;
@@ -46,7 +61,7 @@ namespace Splunk.Metrics.Statsd
 
             return !string.IsNullOrEmpty(additionalDimensionText)
                 ? $"{_defaultDimensionPrefix},{additionalDimensionText}"
-                : $"{_defaultDimensionPrefix}";
+                : _defaultDimensionPrefix;
         }
 
         private string GenerateMetricBucketName(string name) =>
