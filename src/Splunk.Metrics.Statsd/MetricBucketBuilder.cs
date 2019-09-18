@@ -26,33 +26,21 @@ namespace Splunk.Metrics.Statsd
             _defaultDimensionPrefix = $"{DimensionsPrefix}{GenerateDimensions(GenerateDefaultDimensions(additionalDimensions))}";
         }
 
-        public string Build(string metricType, string name, string value)
+        public string Build(string metricType, string name, string value) => 
+            Build(metricType, name, value, _supportDimensions ? _defaultDimensionPrefix : string.Empty);
+
+        public string Build(string metricType, string name, string value, IEnumerable<KeyValuePair<string, string>> additionalDimensions) => 
+            Build(metricType, name, value, GenerateAdditionalDimensions(additionalDimensions));
+
+        private string Build(string metricType, string name, string value, string dimensions)
         {
-            var extendedMetric = GenerateMetricBucketName(name)
-                                 + ":" + value
-                                 + "|" + metricType
-                                 + GenerateDimensionsForExtendedMetrics();
-            return _ensureLowercasedMetricNames ? extendedMetric.ToLowerInvariant() : extendedMetric;
-        }
-        
-        public string Build(string metricType, string name, string value, IEnumerable<KeyValuePair<string, string>> additionalDimensions)
-        {
-            var extendedMetric = GenerateMetricBucketName(name)
-                                 + ":" + value
-                                 + "|" + metricType
-                                 + GenerateDimensionsForExtendedMetrics(additionalDimensions);
+            var extendedMetric = $"{GenerateMetricBucketName(name)}:{value}|{metricType}{dimensions}"
+                .Replace(' ', '-');
+
             return _ensureLowercasedMetricNames ? extendedMetric.ToLowerInvariant() : extendedMetric;
         }
 
-        private string GenerateDimensionsForExtendedMetrics()
-        {
-            if (!_supportDimensions)
-                return string.Empty;
-            
-            return _defaultDimensionPrefix;
-        }
-        
-        private string GenerateDimensionsForExtendedMetrics(IEnumerable<KeyValuePair<string, string>> additionalDimensions)
+        private string GenerateAdditionalDimensions(IEnumerable<KeyValuePair<string, string>> additionalDimensions)
         {
             if (!_supportDimensions)
                 return string.Empty;
@@ -65,7 +53,7 @@ namespace Splunk.Metrics.Statsd
         }
 
         private string GenerateMetricBucketName(string name) =>
-            string.IsNullOrEmpty(_prefix) || _supportDimensions ? name : _prefix + "." + name;
+            string.IsNullOrEmpty(_prefix) || _supportDimensions ? name : $"{_prefix}.{name}";
 
         private static string GenerateDimensions(IEnumerable<KeyValuePair<string, string>> dimensions) =>
             dimensions == null
