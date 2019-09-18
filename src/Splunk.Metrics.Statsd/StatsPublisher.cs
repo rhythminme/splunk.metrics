@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Splunk.Metrics.Abstractions;
@@ -176,7 +177,7 @@ namespace Splunk.Metrics.Statsd
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
 
-            await _channel.SendAsync(_metricBucketBuilder.Build(metricType, name, value, additionalDimensions));
+            await _channel.SendAsync(_metricBucketBuilder.Build(metricType, name, value, additionalDimensions.ToArray()));
         }
         
         private void SendMetric(string metricType, string name, string value)
@@ -190,7 +191,7 @@ namespace Splunk.Metrics.Statsd
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
 
-            _channel.Send(_metricBucketBuilder.Build(metricType, name, value, additionalDimensions));
+            _channel.Send(_metricBucketBuilder.Build(metricType, name, value, additionalDimensions.ToArray()));
         }
     }
 }

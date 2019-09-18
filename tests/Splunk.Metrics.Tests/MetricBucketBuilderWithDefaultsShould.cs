@@ -12,6 +12,7 @@ namespace Splunk.Metrics.Tests
         [InlineData("METRIC-PREFIX", "METRIC-NAME", MetricTypes.Count, "1", "metric-name:1|c|#instance:test-machine,namespace:metric-prefix")]
         [InlineData("METRIC-PREFIX", "METRIC-NAME", MetricTypes.Gauge, "1", "metric-name:1|g|#instance:test-machine,namespace:metric-prefix")]
         [InlineData("METRIC-PREFIX", "METRIC-NAME", MetricTypes.Timing, "1", "metric-name:1|ms|#instance:test-machine,namespace:metric-prefix")]
+        [InlineData("metric prefix", "metric name", MetricTypes.Count, "1", "metric-name:1|c|#instance:test-machine,namespace:metric-prefix")]
         public void ReturnAValidMetricName(string prefix, string metricName, string type, string value, string expectedBucketName) =>
             new MetricBucketBuilder(new TestEnvironment(), prefix)
                 .Build(type, metricName, value)

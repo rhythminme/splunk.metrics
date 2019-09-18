@@ -28,31 +28,19 @@ namespace Splunk.Metrics.Statsd
 
         public string Build(string metricType, string name, string value)
         {
-            var extendedMetric = GenerateMetricBucketName(name)
-                                 + ":" + value
-                                 + "|" + metricType
-                                 + GenerateDimensionsForExtendedMetrics();
-            return _ensureLowercasedMetricNames ? extendedMetric.ToLowerInvariant() : extendedMetric;
+            return Build(metricType, name, value, Enumerable.Empty<KeyValuePair<string, string>>());
         }
         
         public string Build(string metricType, string name, string value, IEnumerable<KeyValuePair<string, string>> additionalDimensions)
         {
-            var extendedMetric = GenerateMetricBucketName(name)
-                                 + ":" + value
-                                 + "|" + metricType
-                                 + GenerateDimensionsForExtendedMetrics(additionalDimensions);
+            var extendedMetric =
+                $"{GenerateMetricBucketName(name)}:{value}|{metricType}{GenerateDimensionsForExtendedMetrics(additionalDimensions.ToArray())}"
+                    .Replace(' ', '-');
+            
             return _ensureLowercasedMetricNames ? extendedMetric.ToLowerInvariant() : extendedMetric;
         }
 
-        private string GenerateDimensionsForExtendedMetrics()
-        {
-            if (!_supportDimensions)
-                return string.Empty;
-            
-            return _defaultDimensionPrefix;
-        }
-        
-        private string GenerateDimensionsForExtendedMetrics(IEnumerable<KeyValuePair<string, string>> additionalDimensions)
+        private string GenerateDimensionsForExtendedMetrics(params KeyValuePair<string, string>[] additionalDimensions)
         {
             if (!_supportDimensions)
                 return string.Empty;
