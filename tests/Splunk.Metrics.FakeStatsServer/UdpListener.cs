@@ -5,11 +5,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
 using Xunit.Abstractions;
 
-namespace Splunk.Metrics.Tests.Integration
+namespace Splunk.Metrics.FakeStatsServer
 {   
     public class UdpListener : IDisposable 
     {
@@ -19,7 +17,8 @@ namespace Splunk.Metrics.Tests.Integration
         private readonly UdpClient _udpClient;
         private readonly IPAddress _localIpAddress = IPAddress.Parse("127.0.0.1");
         private readonly ManualResetEventSlim _writtenEvent = new ManualResetEventSlim();
-        private const string messageDelimiter = "&";
+        private const string MessageDelimiter = "&";
+        private const char MessageDelimiterAsChar = '&';
         
         public UdpListener(ITestOutputHelper testOutput, int expectedMessages = 1)
         {
@@ -43,12 +42,13 @@ namespace Splunk.Metrics.Tests.Integration
             if (_receivedBytes.Count == 0) _receivedBytes.Add(receivedBytes);
             else
             {
-                _receivedBytes.Add(Encoding.UTF8.GetBytes(messageDelimiter));
+                _receivedBytes.Add(Encoding.UTF8.GetBytes(MessageDelimiter));
                 _receivedBytes.Add(receivedBytes);
             }
             
             _testOutput.WriteLine("Received Bytes ___________________________");
-            _testOutput.WriteLine(receivedBytes.ToString ());
+            _testOutput.WriteLine(BitConverter.ToString(receivedBytes));
+            _testOutput.WriteLine(Encoding.UTF8.GetString(receivedBytes));
 
             if (--_expectedMessages == 0)
             {
@@ -76,7 +76,7 @@ namespace Splunk.Metrics.Tests.Integration
         public IEnumerable<string> GetWrittenBytesAsString()
         {
             _writtenEvent.Wait(2000);
-            return Encoding.UTF8.GetString(_receivedBytes.SelectMany(bArray => bArray).ToArray()).Split(messageDelimiter);
+            return Encoding.UTF8.GetString(_receivedBytes.SelectMany(bArray => bArray).ToArray()).Split(MessageDelimiterAsChar);
         }
     }
 }

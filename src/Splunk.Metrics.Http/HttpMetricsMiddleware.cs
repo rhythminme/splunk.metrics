@@ -30,8 +30,9 @@ namespace Splunk.Metrics.Http
                 ? $"http.{routeData.Values["controller"]}-{routeData.Values["action"]}-{context.Request.Method}"
                 : $"http.no-route-data";
 
-            await statsPublisher.TimingAsync($"{bucketPrefix}.msecs", stopwatch.ElapsedMilliseconds);
-            await statsPublisher.IncrementAsync($"{bucketPrefix}.{context.Response.StatusCode}");
+            await Task.WhenAll(
+                statsPublisher.TimingAsync($"{bucketPrefix}.msecs", stopwatch.ElapsedMilliseconds), 
+                statsPublisher.IncrementAsync($"{bucketPrefix}.{context.Response.StatusCode}"));
         }
     }
 }

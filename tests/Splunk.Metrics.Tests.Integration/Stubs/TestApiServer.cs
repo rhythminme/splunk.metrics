@@ -12,21 +12,15 @@ namespace Splunk.Metrics.Tests.Integration.Stubs
     public class TestApiServer : IDisposable
     {
         private readonly int _port;
-        private TestServer server;
+        private TestServer _server;
 
-        public void Dispose()
-        {
-            server.Dispose();
-        }
+        public void Dispose() => _server?.Dispose();
 
-        public TestApiServer(int port)
-        {
-            _port = port;
-        }
+        public TestApiServer(int port) => _port = port;
 
         public HttpClient Start()
         {
-            server = new TestServer(new WebHostBuilder()
+            _server = new TestServer(new WebHostBuilder()
                 .UseStartup<Startup>()
                 .ConfigureServices(s =>
                 {
@@ -38,7 +32,7 @@ namespace Splunk.Metrics.Tests.Integration.Stubs
                     s.AddTransient<IStatsPublisher, StatsPublisher>();
                 }));
 
-            return server.CreateClient();
+            return _server.CreateClient();
         }
     }
 }

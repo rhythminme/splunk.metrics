@@ -1,9 +1,9 @@
 using System;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
+using Splunk.Metrics.FakeStatsServer;
 using Splunk.Metrics.Statsd;
 using Xunit;
 using Xunit.Abstractions;
@@ -16,7 +16,7 @@ namespace Splunk.Metrics.Tests.Integration
         private readonly StatsPublisher _statsPublisher;
 
         [Fact]
-        public async Task SendWellformedStatsDUdpPacket()
+        public async Task SendWelformedStatsDUdpPacket()
         {
             using (_statsPublisher.BeginTiming("some-feature.event"))
             {

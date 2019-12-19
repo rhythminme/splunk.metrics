@@ -27,5 +27,6 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Splunk.Metrics.Http\Splunk.Metrics.Http.csproj" />
         <ProjectReference Include="..\..\src\Splunk.Metrics.Statsd\Splunk.Metrics.Statsd.csproj" />
+        <ProjectReference Include="..\Splunk.Metrics.FakeStatsServer\Splunk.Metrics.FakeStatsServer.csproj" />
     </ItemGroup>
 </Project>

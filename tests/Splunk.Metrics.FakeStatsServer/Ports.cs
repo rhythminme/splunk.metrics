@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace Splunk.Metrics.Tests.Integration
+namespace Splunk.Metrics.FakeStatsServer
 {
     public static class Ports
     {

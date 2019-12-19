@@ -88,7 +88,7 @@ container.RegisterInstance(new StatsConfiguration(...)));
 }
 ```
 
-## Adding HTTP Metrics
+## Adding HTTP Metrics (ASP.NET Core)
 * Install the Nuget package **Splunk.Metrics.Http**
 ```powershell
 Install-Package Splunk.Metrics.Http
@@ -103,3 +103,26 @@ Install-Package Splunk.Metrics.Http
             app.UseMvc();
         }
 ```
+
+## Adding HTTP Metrics (Web API 2.x)
+* Install the Nuget package **Splunk.Metrics.WebApi**
+```powershell
+Install-Package Splunk.Metrics.WebApi
+```
+
+* In your startup, add the filter `HttpMetricsFilter` to the Http Configuration and the HTTP metrics middleware to the OWIN pipeline. Note that this should be one of the first middlewares in the pipeline to effectively capture metrics for all requests:
+
+```csharp
+\\ Startup.cs
+public void Configuration(IAppBuilder app)
+{
+    var httpConfiguration = new HttpConfiguration();
+    httpConfiguration.Filters.Add(new HttpMetricsFilter());
+	
+	\\ Additional config...
+
+    app.UseHttpMetrics(_statsConfiguration)
+        .UseWebApi(httpConfiguration);
+}
+```
+
