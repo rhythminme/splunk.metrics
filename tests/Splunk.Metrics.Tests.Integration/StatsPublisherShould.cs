@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
+using Splunk.Metrics.FakeStatsServer;
 using Splunk.Metrics.Statsd;
 using Xunit;
 using Xunit.Abstractions;

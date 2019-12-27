@@ -111,3 +111,5 @@ UpgradeLog*.XML
 
 Nuget Releases/
 .idea/
+db.lock
+.vs/
