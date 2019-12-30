@@ -111,7 +111,7 @@ namespace Splunk.Metrics.WebApi.Tests
                 var request = new HttpRequestMessage(new HttpMethod(method), "/dimensions/dimension-value");
 
                 var response = await testApiClient.SendAsync(request);
-                var expectedStatusBucket = $"http.{controllerName}-{actionName}-{method}.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:unit.tests"
+                var expectedStatusBucket = $"http.{controllerName}-{actionName}-{method}.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:unit.tests,dimension:dimension-value"
                     .ToLowerInvariant();
 
                 _udpListener.GetWrittenBytesAsString().Last().Should().Be(expectedStatusBucket);
