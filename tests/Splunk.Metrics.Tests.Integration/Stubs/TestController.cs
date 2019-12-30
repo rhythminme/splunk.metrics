@@ -11,10 +11,10 @@ namespace Splunk.Metrics.Tests.Integration.Stubs
 
         [Route("dimensions/{value}")]
         [HttpGet, HttpPost]
-        public string DimensionsRecordedByMiddleware(string value)
+        public IActionResult DimensionsRecordedByMiddleware(string value)
         {
             Request.HttpContext.SetDimensionForHttpMetrics("dimension", value);
-            return $"bucket:{value}";
+            return Ok($"bucket:{value}");
         }
     }
 }
