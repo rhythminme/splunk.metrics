@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http;
+using System.Web.Http;
 
 namespace Splunk.Metrics.WebApi.Tests.Stubs
 {
@@ -6,6 +7,14 @@ namespace Splunk.Metrics.WebApi.Tests.Stubs
     {
         [Route("metrics/{bucket}")]
         [HttpGet, HttpPost]
-        public string MetricsLoggedByMiddleware(int bucket) => $"bucket:{bucket}";
+        public string MetricsRecordedByMiddleware(int bucket) => $"bucket:{bucket}";
+
+        [Route("dimensions/{value}")]
+        [HttpGet, HttpPost]
+        public string DimensionsRecordedByMiddleware(string value)
+        {
+            Request.GetOwinContext().SetDimensionForHttpMetrics("dimension", value);
+            return $"bucket:{value}";
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace Splunk.Metrics.Tests.Integration
         public async Task EmitTimingMetricsForMvcRoutesRequested(string method)
         {
             const string controllerName = "test";
-            const string actionName = "metricsloggedbymiddleware";
+            const string actionName = "metricsrecordedbymiddleware";
 
             using (var testApiClient = _testApiServer.Start())
             {
@@ -55,7 +55,7 @@ namespace Splunk.Metrics.Tests.Integration
         public async Task EmitCountMetricsForMvcRoutesRequested(string method)
         {
             const string controllerName = "test";
-            const string actionName = "metricsloggedbymiddleware";
+            const string actionName = "metricsrecordedbymiddleware";
 
             using (var testApiClient = _testApiServer.Start())
             {
@@ -93,6 +93,26 @@ namespace Splunk.Metrics.Tests.Integration
                 var expectedStatusBucket = $"http.no-route-data.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:integration.tests"
                     .ToLowerInvariant();
                 
+                _udpListener.GetWrittenBytesAsString().Last().Should().Be(expectedStatusBucket);
+            }
+        }
+
+        [Theory]
+        [InlineData("GET")]
+        [InlineData("POST")]
+        public async Task EmitCustomDimensionsForRequests(string method)
+        {
+            const string controllerName = "test";
+            const string actionName = "dimensionsrecordedbymiddleware";
+
+            using (var testApiClient = _testApiServer.Start())
+            {
+                var request = new HttpRequestMessage(new HttpMethod(method), "/dimensions/dimension-value");
+
+                var response = await testApiClient.SendAsync(request);
+                var expectedStatusBucket = $"http.{controllerName}-{actionName}-{method}.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:integration.tests,dimension:dimension-value"
+                    .ToLowerInvariant();
+
                 _udpListener.GetWrittenBytesAsString().Last().Should().Be(expectedStatusBucket);
             }
         }
