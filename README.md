@@ -104,6 +104,12 @@ Install-Package Splunk.Metrics.Http
         }
 ```
 
+You can optionally add dimensions to your http metrics from your controller without accessing the stats publisher as follows:
+
+```csharp
+Request.HttpContext.SetDimensionForHttpMetrics("some-dimension", "some-dimension-value");
+```
+
 ## Adding HTTP Metrics (Web API 2.x)
 * Install the Nuget package **Splunk.Metrics.WebApi**
 ```powershell
@@ -126,3 +132,8 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
+You can optionally add dimensions to your http metrics from your controller without accessing the stats publisher as follows:
+
+```csharp
+Request.GetOwinContext().SetDimensionForHttpMetrics("some-dimension", some-dimension-value);
+```
