@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
@@ -8,31 +10,47 @@ namespace Splunk.Metrics.Http
 {
     public class HttpMetricsMiddleware
     {
-        private readonly RequestDelegate next;
-        private readonly IStatsPublisher statsPublisher;
+        private readonly RequestDelegate _next;
+        private readonly IStatsPublisher _statsPublisher;
 
         public HttpMetricsMiddleware(RequestDelegate next, IStatsPublisher statsPublisher)
         {
-            this.next = next;
-            this.statsPublisher = statsPublisher;
+            this._next = next;
+            this._statsPublisher = statsPublisher;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
             var stopwatch = Stopwatch.StartNew();
 
-            await next(context);
+            await _next(context);
 
             stopwatch.Stop();
 
-            var routeData = context.GetRouteData();
-            var bucketPrefix = routeData != null
-                ? $"http.{routeData.Values["controller"]}-{routeData.Values["action"]}-{context.Request.Method}"
-                : $"http.no-route-data";
+            var bucketPrefix = CreateBucketPrefix(context);
+            var dimensions = ExtractDimensions(context);
 
             await Task.WhenAll(
-                statsPublisher.TimingAsync($"{bucketPrefix}.msecs", stopwatch.ElapsedMilliseconds), 
-                statsPublisher.IncrementAsync($"{bucketPrefix}.{context.Response.StatusCode}"));
+                _statsPublisher.TimingAsync($"{bucketPrefix}.msecs", stopwatch.ElapsedMilliseconds, dimensions), 
+                _statsPublisher.IncrementAsync($"{bucketPrefix}.{context.Response.StatusCode}", 1, dimensions));
+        }
+
+        private static string CreateBucketPrefix(HttpContext context)
+        {
+            var routeData = context.GetRouteData();
+            return routeData != null
+                ? $"http.{routeData.Values["controller"]}-{routeData.Values["action"]}-{context.Request.Method}"
+                : "http.no-route-data";
+        }
+
+        private static KeyValuePair<string, string>[] ExtractDimensions(HttpContext context)
+        {
+            return context.Items.Keys
+                .Where(key => key.ToString().StartsWith(HttpMetrics.OwinContextSplunkMetricsDimensionPrefix))
+                .Select(key => new KeyValuePair<string, string>(
+                    key.ToString().Substring(HttpMetrics.OwinContextSplunkMetricsDimensionPrefix.Length + 1),
+                    context.Items[key].ToString()))
+                .ToArray();
         }
     }
 }

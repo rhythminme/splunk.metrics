@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Splunk.Metrics.Http;
 
 namespace Splunk.Metrics.Tests.Integration.Stubs
 {
@@ -6,6 +7,14 @@ namespace Splunk.Metrics.Tests.Integration.Stubs
     {
         [HttpGet, HttpPost]
         [Route("/metrics")]
-        public IActionResult MetricsLoggedByMiddleware(string id) => Ok();
+        public IActionResult MetricsRecordedByMiddleware(string id) => Ok();
+
+        [Route("dimensions/{value}")]
+        [HttpGet, HttpPost]
+        public string DimensionsRecordedByMiddleware(string value)
+        {
+            Request.HttpContext.SetDimensionForHttpMetrics("dimension", value);
+            return $"bucket:{value}";
+        }
     }
 }
