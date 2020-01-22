@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Splunk.Metrics.Abstractions;
-
 namespace Splunk.Metrics.Http
 {
     public class HttpMetricsMiddleware

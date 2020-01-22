@@ -20,14 +20,13 @@ namespace Splunk.Metrics.Tests.Integration
         [InlineData("POST")]
         public async Task EmitTwoMetricsPerMethod(string method)
         {
-            using (var testApiClient = await _testApiServer.Start())
-            {
-                var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
+            using var testApiClient = await _testApiServer.Start();
+            
+            var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
 
-                await testApiClient.SendAsync(request);
+            await testApiClient.SendAsync(request);
 
-                _udpListener.GetWrittenBytesAsString().Should().HaveCount(2);
-            }
+            _udpListener.GetWrittenBytesAsString().Should().HaveCount(2);
         }
         
         [Theory]
@@ -38,15 +37,14 @@ namespace Splunk.Metrics.Tests.Integration
             const string controllerName = "test";
             const string actionName = "metricsrecordedbymiddleware";
 
-            using (var testApiClient = await _testApiServer.Start())
-            {
-                var expectedRouteBucket = $@"http\.{controllerName}-{actionName}-{method}\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
+            using var testApiClient = await _testApiServer.Start();
+            
+            var expectedRouteBucket = $@"http\.{controllerName}-{actionName}-{method}\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
 
-                var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
+            var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
 
-                await testApiClient.SendAsync(request);
-                _udpListener.GetWrittenBytesAsString().First().Should().MatchRegex(expectedRouteBucket);
-            }
+            await testApiClient.SendAsync(request);
+            _udpListener.GetWrittenBytesAsString().First().Should().MatchRegex(expectedRouteBucket);
         }
         
         [Theory]
@@ -71,14 +69,13 @@ namespace Splunk.Metrics.Tests.Integration
         [Fact]
         public async Task EmitTimingMetricsForRequestsThatDoNotContainRouteData()
         {
-            using (var testApiClient = await _testApiServer.Start())
-            {
-                var expectedRouteBucket = $@"http\.no-route-data\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
-                var request = new HttpRequestMessage(HttpMethod.Get, "/non-existent-page");
+            using var testApiClient = await _testApiServer.Start();
+            
+            var expectedRouteBucket = $@"http\.no-route-data\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
+            var request = new HttpRequestMessage(HttpMethod.Get, "/non-existent-page");
 
-                await testApiClient.SendAsync(request);
-                _udpListener.GetWrittenBytesAsString().First().Should().MatchRegex(expectedRouteBucket);
-            }
+            await testApiClient.SendAsync(request);
+            _udpListener.GetWrittenBytesAsString().First().Should().MatchRegex(expectedRouteBucket);
         }
         
         [Fact]
