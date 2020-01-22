@@ -9,13 +9,14 @@ namespace Splunk.Metrics.Tests.Integration.Stubs
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddControllers();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseHttpMetrics();
-            app.UseMvc();
+            app.UseRouting()
+                .UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

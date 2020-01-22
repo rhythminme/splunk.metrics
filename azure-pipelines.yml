@@ -13,7 +13,7 @@ pr:
   - master
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'windows-latest'
 
 variables:
   majorMinorVersion: 1.0

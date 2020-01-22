@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netstandard2.1;net472</TargetFrameworks>
         <PackageDescription>Implements extended metrics for Splunk (dimensions and sample rate)</PackageDescription>
     </PropertyGroup>
 
@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.1" />
     </ItemGroup>
 
 </Project>

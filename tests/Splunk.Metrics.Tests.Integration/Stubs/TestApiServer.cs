@@ -1,8 +1,10 @@
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Splunk.Metrics.Abstractions;
 using Splunk.Metrics.Statsd;
@@ -12,27 +14,31 @@ namespace Splunk.Metrics.Tests.Integration.Stubs
     public class TestApiServer : IDisposable
     {
         private readonly int _port;
-        private TestServer _server;
-
-        public void Dispose() => _server?.Dispose();
-
+        private IHost _host;
+        
         public TestApiServer(int port) => _port = port;
 
-        public HttpClient Start()
+        public async Task<HttpClient> Start()
         {
-            _server = new TestServer(new WebHostBuilder()
-                .UseStartup<Startup>()
-                .ConfigureServices(s =>
+            var configureWebHost = new HostBuilder()
+                .ConfigureWebHost(webHostBuilder =>
                 {
-                    s.AddTransient(sp => Options.Create(new StatsConfiguration
-                    {
-                        Prefix = "Integration.Tests",
-                        Port = _port
-                    }));
-                    s.AddTransient<IStatsPublisher, StatsPublisher>();
-                }));
-
-            return _server.CreateClient();
+                    webHostBuilder.UseTestServer()
+                        .UseStartup<Startup>()
+                        .ConfigureTestServices(s =>
+                        {
+                            s.AddTransient(sp => Options.Create(new StatsConfiguration
+                            {
+                                Prefix = "Integration.Tests",
+                                Port = _port
+                            }));
+                            s.AddTransient<IStatsPublisher, StatsPublisher>();
+                        });
+                });
+            _host = await configureWebHost.StartAsync();
+            return _host.GetTestClient();
         }
+
+        public void Dispose() => _host?.Dispose();
     }
 }

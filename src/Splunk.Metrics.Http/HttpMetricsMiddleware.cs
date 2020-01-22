@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Splunk.Metrics.Abstractions;
-
 namespace Splunk.Metrics.Http
 {
     public class HttpMetricsMiddleware
@@ -38,7 +37,7 @@ namespace Splunk.Metrics.Http
         private static string CreateBucketPrefix(HttpContext context)
         {
             var routeData = context.GetRouteData();
-            return routeData != null
+            return routeData != null && routeData.Values.Count > 0
                 ? $"http.{routeData.Values["controller"]}-{routeData.Values["action"]}-{context.Request.Method}"
                 : "http.no-route-data";
         }

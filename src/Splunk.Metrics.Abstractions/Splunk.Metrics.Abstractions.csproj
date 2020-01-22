@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netstandard2.1;net472</TargetFrameworks>
         <PackageDescription>Base interfaces for emitting metrics via statsd.</PackageDescription>
     </PropertyGroup>
 
