@@ -38,7 +38,7 @@ namespace Splunk.Metrics.Http
         private static string CreateBucketPrefix(HttpContext context)
         {
             var routeData = context.GetRouteData();
-            return routeData != null
+            return routeData != null && routeData.Values.Count > 0
                 ? $"http.{routeData.Values["controller"]}-{routeData.Values["action"]}-{context.Request.Method}"
                 : "http.no-route-data";
         }

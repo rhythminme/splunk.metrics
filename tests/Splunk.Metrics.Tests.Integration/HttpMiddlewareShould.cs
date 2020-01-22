@@ -20,7 +20,7 @@ namespace Splunk.Metrics.Tests.Integration
         [InlineData("POST")]
         public async Task EmitTwoMetricsPerMethod(string method)
         {
-            using (var testApiClient = _testApiServer.Start())
+            using (var testApiClient = await _testApiServer.Start())
             {
                 var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
 
@@ -38,7 +38,7 @@ namespace Splunk.Metrics.Tests.Integration
             const string controllerName = "test";
             const string actionName = "metricsrecordedbymiddleware";
 
-            using (var testApiClient = _testApiServer.Start())
+            using (var testApiClient = await _testApiServer.Start())
             {
                 var expectedRouteBucket = $@"http\.{controllerName}-{actionName}-{method}\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
 
@@ -57,22 +57,21 @@ namespace Splunk.Metrics.Tests.Integration
             const string controllerName = "test";
             const string actionName = "metricsrecordedbymiddleware";
 
-            using (var testApiClient = _testApiServer.Start())
-            {
-                var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
+            using var testApiClient = await _testApiServer.Start();
+            
+            var request = new HttpRequestMessage(new HttpMethod(method), "/metrics");
 
-                var response = await testApiClient.SendAsync(request);
-                var expectedStatusBucket = $"http.{controllerName}-{actionName}-{method}.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:integration.tests"
-                    .ToLowerInvariant();
-                
-                _udpListener.GetWrittenBytesAsString().Last().Should().Be(expectedStatusBucket);
-            }
+            var response = await testApiClient.SendAsync(request);
+            var expectedStatusBucket = $"http.{controllerName}-{actionName}-{method}.{(int)response.StatusCode}:1|c|#instance:{Environment.MachineName},namespace:integration.tests"
+                .ToLowerInvariant();
+            
+            _udpListener.GetWrittenBytesAsString().Last().Should().Be(expectedStatusBucket);
         }
 
         [Fact]
         public async Task EmitTimingMetricsForRequestsThatDoNotContainRouteData()
         {
-            using (var testApiClient = _testApiServer.Start())
+            using (var testApiClient = await _testApiServer.Start())
             {
                 var expectedRouteBucket = $@"http\.no-route-data\.msecs:([0-9]+)\|ms\|#instance:{Environment.MachineName},namespace:integration\.tests".ToLowerInvariant();
                 var request = new HttpRequestMessage(HttpMethod.Get, "/non-existent-page");
@@ -85,7 +84,7 @@ namespace Splunk.Metrics.Tests.Integration
         [Fact]
         public async Task EmitCountMetricsForRequestsThatDoNotContainRouteData()
         {
-            using (var testApiClient = _testApiServer.Start())
+            using (var testApiClient = await _testApiServer.Start())
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, "/non-existent-page");
 
@@ -105,7 +104,7 @@ namespace Splunk.Metrics.Tests.Integration
             const string controllerName = "test";
             const string actionName = "dimensionsrecordedbymiddleware";
 
-            using (var testApiClient = _testApiServer.Start())
+            using (var testApiClient = await _testApiServer.Start())
             {
                 var request = new HttpRequestMessage(new HttpMethod(method), "/dimensions/dimension-value");
 
